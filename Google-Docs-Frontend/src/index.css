@@ -1,0 +1,100 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.ql-toolbar.ql-snow{
+  border-radius: 10px;
+  background-color:rgb(200, 231, 239) ;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.ql-container.ql-snow{
+  height: 80vh;
+  background-color:white;
+  border: 2px solid #333
+}
+.documentpage{
+  padding: 0px 30px;
+  background-color: rgb(246, 253, 255);
+}
+.documentNavbar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.logo{
+  height: 50px;
+  width: auto;
+}
+.nav1{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#document-title{
+  align-self: center;
+}
+.btns{
+  margin: 0px 5px;
+}
+.username-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

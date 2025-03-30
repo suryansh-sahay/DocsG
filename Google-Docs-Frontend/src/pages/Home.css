@@ -1,0 +1,169 @@
+
+/* styles.css */
+@import '~font-awesome/css/font-awesome.min.css';
+/* Header styles */
+.carousel {
+    width:60vw;
+    height:auto;
+    margin:0px 21vw; /* Make sure the carousel fits within the Hero section */
+}
+/* .image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* This ensures the entire image fits without cropping */
+  /* } */
+
+.header {
+    background-color: #023e8a;
+    color: #fff;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .nav{
+    align-self: center;
+  }
+  .nav-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+  }
+
+  .nav-list li {
+    margin-right: 20px;
+  }
+
+  .nav-list a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .nav-list a:hover {
+    color:#90e0ef;
+  }
+
+  /* Hero styles */
+  .hero {
+    /* background-color: #caf0f8; */
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+  }
+
+  .hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+
+  .cta-button {
+    background-color: #0077b6;
+    color: #fff;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #90e0ef;
+  }
+
+  /* Features styles */
+  .features {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 0;
+  }
+
+  .feature {
+    text-align: center;
+    max-width: 300px;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  /* CTA styles */
+  .cta {
+    background-color:#023e8a;
+    color: #fff;
+    text-align: center;
+    padding: 100px 0;
+  }
+
+  h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 18px;
+    margin-bottom: 30px;
+  }
+
+  .cta-button {
+    background-color: #fff;
+    color:#023e8a;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #90e0ef;
+  }
+
+  /* Footer styles */
+  .footer {
+    background-color: #023e8a;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .footer-content {
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+  }
+
+  .social-icons {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+  }
+
+  .social-icons li {
+    font-size: 34px;
+  }
+
+  .social-icons a {
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .social-icons a:hover {
+    color: white;
+  }
