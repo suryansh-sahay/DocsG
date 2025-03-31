@@ -7,7 +7,7 @@ function Footer() {
         <p>&copy; 2023 Google Docs Clone</p>
         <ul className="social-icons">
           <li>
-            <a href="https://www.linkedin.com/in/soham-sawant-112293250/" target="_blank">
+            <a href="https://www.linkedin.com/in/soham-sawant-112293250/" target="_blank" rel="noreferrer">
             <i class="fa fa-linkedin-square" aria-hidden="true"></i>
             </a>
           </li>
