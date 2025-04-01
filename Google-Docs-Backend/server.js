@@ -9,6 +9,13 @@ const cookieParser = require('cookie-parser');
 const Document = require('./models/Documents');
 const cors = require('cors');
 
+app.use((req, res, next) => {
+  if (req.path === '/favicon.ico') {
+    return res.status(204).end(); // Ignore favicon requests
+  }
+  next();
+});
+
 //socket connection
 const io = require("socket.io")(3000,{
   cors: {
