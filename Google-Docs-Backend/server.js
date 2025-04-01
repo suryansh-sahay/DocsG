@@ -44,8 +44,6 @@ io.on("connection", socket =>{
 const connectDb = async ()=>{
   try{
     await mongoose.connect(process.env.DATABASE_URL,{
-      useNewUrlParser: true,     // Added useNewUrlParser option
-      useUnifiedTopology: true,  // Added useUnifiedTopology option
     })
   } catch(err){
     console.log("error while connecting to the db",err)
