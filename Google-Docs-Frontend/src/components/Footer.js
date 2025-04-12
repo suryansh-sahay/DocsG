@@ -7,17 +7,17 @@ function Footer() {
         <p>&copy; 2023 Google Docs Clone</p>
         <ul className="social-icons">
           <li>
-            <a href="https://www.linkedin.com/in/soham-sawant-112293250/" target="_blank" rel="noreferrer">
+            <a href="https://www.linkedin.com/in/suryansh-sahay-2a426a27a/" target="_blank" rel="noreferrer">
             <i class="fa fa-linkedin-square" aria-hidden="true"></i>
             </a>
           </li>
           <li>
-            <a href="https://github.com/s0ham075" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/suryansh-sahay" target="_blank" rel="noopener noreferrer">
             <i class="fa fa-github-square" aria-hidden="true"></i>
             </a>
           </li>
           <li>
-            <a href="https://twitter.com/sohamsa30913657?t=y-np2Ic-t0qgvClxQZyIRA&s=08" target="_blank" rel="noopener noreferrer">
+            <a href="https://x.com/surya79955?s=08" target="_blank" rel="noopener noreferrer">
             <i class="fa fa-twitter-square" aria-hidden="true"></i>
             </a>
           </li>

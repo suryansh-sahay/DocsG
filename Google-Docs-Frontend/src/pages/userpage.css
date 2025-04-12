@@ -1,107 +1,133 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #a8edea, #fed6e3);
+  min-height: 100vh;
+}
 
+/* Main container */
 .user-page-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f2f2f2;
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Header styles */
+.userpage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.userpage-header h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #222;
+}
+
+/* Create button */
+.create-button {
+  background: linear-gradient(to right, #1d8cf8, #3358f4);
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.create-button:hover {
+  background: linear-gradient(to right, #00c6ff, #0072ff);
+  transform: scale(1.05);
+}
+
+/* Document list */
+.documents-list {
+  border-radius: 15px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+}
+
+.document-item {
+  padding: 15px 20px;
+  background-color: white;
+  border-bottom: 1px solid #e0e0e0;
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.document-item:hover {
+  background: #49a5d6;
+  transform: translateX(5px);
+}
+
+.document-title {
+  font-size: 18px;
+  color: #444;
+}
+
+/* Popup */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+  padding: 25px;
+  z-index: 1000;
+  max-width: 400px;
+  width: 90%;
+  animation: popIn 0.3s ease-in-out;
+}
+
+@keyframes popIn {
+  from {
+    transform: translate(-50%, -60%);
+    opacity: 0;
   }
-
-  .userpage-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-
-  .header h1 {
-    font-size: 24px;
-    color: #333;
-  }
-
-  .documents-list {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-
-  .document-item {
-    padding: 20px;
-    border-bottom: 1px solid #ddd;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    background: none;
-    transition: all 8s ease;
-  }
-
-  .document-item:hover {
-    background: linear-gradient(to right, #6db8e3, #fff);
-  }
-
-  .document-title {
-    font-size: 18px;
-    color: #333;
-  }
-
-  .create-button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-
-  .create-button:hover {
-    background-color: #0056b3;
-  }
-
-
-  .popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
+  to {
     transform: translate(-50%, -50%);
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    padding: 20px;
-    z-index: 1000;
-    max-width: 400px;
-    width: 90%;
-    text-align: center;
+    opacity: 1;
   }
+}
 
-  .popup label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #333;
-  }
+.popup label {
+  display: block;
+  margin-bottom: 12px;
+  font-weight: 600;
+  color: #333;
+}
 
-  .popup input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-  }
+.popup input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
 
-  .popup button[type="submit"] {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
+.popup button[type="submit"] {
+  background-color: #1d8cf8;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
-  .popup button[type="submit"]:hover {
-    background-color: #0056b3;
-  }
+.popup button[type="submit"]:hover {
+  background-color: #0072ff;
+}

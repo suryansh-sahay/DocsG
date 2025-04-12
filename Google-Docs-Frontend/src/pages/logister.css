@@ -1,71 +1,130 @@
+
+
 .loginpage {
-    background: linear-gradient(to bottom, #6db8e3, #fff);
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+  background: linear-gradient(135deg, #8fd3f4, #84fab0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .login-container {
-    width:40vw;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 90%;
+  max-width: 420px;
+  padding: 35px 30px;
+  border-radius: 16px;
+  background-color: #ffffff; /* Clean white background */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  animation: fadeIn 0.5s ease-in;
+  color: #2c3e50; /* Rich text color */
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
 
-  .login-container h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
+}
 
-  .form-group {
-    margin-bottom: 15px;
-  }
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #2c3e50;
+  font-weight: 700;
+  font-size: 28px;
+}
 
-  .form-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-  }
+.subtitle {
+  text-align: center;
+  color: #6c757d;
+  margin-bottom: 25px;
+  font-size: 15px;
+}
 
-  .form-group input {
-    width: 100%;
-    padding: 10px 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    margin-right: 5px;
-  }
 
-  .btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+.form-group {
+  margin-bottom: 15px;
+}
 
-  .btn:hover {
-    background-color: #0056b3;
-  }
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #4a4a4a;
+  font-weight: 500;
+}
 
-  .error-message {
-    color: #ff5733;
-    text-align: center;
-    margin-top: 10px;
-  }
+.form-group input {
+  width: 100%;
+  padding: 12px 10px;
+  border: 1px solid #cecece;
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: #f9f9f9;
+  transition: border 0.3s;
+}
 
-  .success-message {
-    color: #4caf50;
-    text-align: center;
-    margin-top: 10px;
-  }
+.form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+  background-color: #fff;
+}
+
+.btn {
+  width: 100%;
+  background: linear-gradient(to right, #4facfe, #00f2fe);
+  color: #fff;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: linear-gradient(to right, #43e97b, #38f9d7);
+}
+
+.error-message,
+.success-message {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.error-message {
+  color: #ff4d4f;
+}
+
+.success-message {
+  color: #28a745;
+}
+
+.switch-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+  color: #333;
+}
+
+.switch-link span {
+  color: #007bff;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.switch-link span:hover {
+  color: #a40d29;
+  text-decoration: underline;
+  transform: scale(1.05);
+}
