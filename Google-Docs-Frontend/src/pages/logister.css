@@ -93,19 +93,37 @@
   background: linear-gradient(to right, #43e97b, #38f9d7);
 }
 
-.error-message,
-.success-message {
-  text-align: center;
-  margin-top: 15px;
-  font-size: 14px;
+
+/* Error Styling */
+.input-error {
+  border-color: #ff4d4f !important;
+}
+
+.error-text {
+  color: #ff4d4f;
+  font-size: 13px;
+  margin-top: 5px;
+  display: block;
 }
 
 .error-message {
   color: #ff4d4f;
+  text-align: center;
+  margin: 10px 0;
 }
 
 .success-message {
   color: #28a745;
+  background-color: rgba(40, 167, 69, 0.1);
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 20px;
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.success-message.fade-out {
+  opacity: 0;
 }
 
 .switch-link {
