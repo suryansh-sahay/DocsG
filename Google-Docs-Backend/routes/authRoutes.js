@@ -6,7 +6,7 @@ const Token = require('../models/Token');
 const crypto = require('crypto');
 const sendEmail = require('../sendEmail');
 const createToken = (id)=>{
-    return jwt.sign({id},'soham secret',{
+    return jwt.sign({id},'prakhar secret',{
      expiresIn: 60 * 60 * 3
     })
 }
@@ -81,7 +81,7 @@ router.get('/:userid/verify/:token', async (req,res)=>{
 router.get('/verify',(req,res)=>{
     const token = req.cookies.jwt;
     if(token){
-        jwt.verify(token,'soham secret',async(err, decodedToken)=>{
+        jwt.verify(token,'prakhar secret',async(err, decodedToken)=>{
             if(err){
                 console.log("error while verifying")
             }else{

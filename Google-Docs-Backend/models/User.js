@@ -1,34 +1,33 @@
 const mongoose = require('mongoose');
-const {isEmail} = require('validator')
-// Define the User schema
+const { isEmail } = require('validator');
+
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    required: [true, 'please enter username'],
-    unique: [false,'username required'], // Ensure usernames are unique
-    trim: true,   // Trim whitespace from the beginning and end
+    required: [true, 'Please enter username'],
+    unique: true, // Unique username
+    trim: true,
   },
   password: {
     type: String,
-    required: [false,'password required'],
+    required: [true, 'Password required'],
   },
   email: {
     type: String,
-    required: false,
-    validate:[isEmail,'Please enter valid email']
-    // unique: true, // Ensure email addresses are unique
+    required: true,
+    unique: true,  
+    validate: [isEmail, 'Please enter a valid email'],
   },
-  verified : {
+  verified: {
     type: Boolean,
-    default : false,
+    default: false,
   },
   documents: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Document', // Reference to the Document model
+    ref: 'Document',
   }],
 });
 
-// Create the User model
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
