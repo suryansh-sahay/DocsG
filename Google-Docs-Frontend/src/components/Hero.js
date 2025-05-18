@@ -1,41 +1,29 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { Button, Box, Typography, useTheme, useMediaQuery } from '@mui/material';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Link } from 'react-router-dom';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, useGLTF, Environment, Float } from '@react-three/drei';
+import { OrbitControls, Float } from '@react-three/drei';
 import { EffectComposer, Bloom } from '@react-three/postprocessing';
-import * as THREE from 'three';
 
-// 3D Document Model Component
-function DocumentModel() {
-  const group = useRef();
-  const { nodes, materials } = useGLTF('/document.glb'); // You'll need to provide this model
-
+// Simple 3D Box Model instead of GLB file
+function Simple3DBox() {
   useFrame((state) => {
-    group.current.rotation.y = Math.sin(state.clock.getElapsedTime() * 0.5) * 0.2;
+    state.scene.rotation.y = state.clock.getElapsedTime() * 0.5;
   });
 
   return (
-    <group ref={group} dispose={null}>
-      <mesh geometry={nodes.Document.geometry} material={materials.Paper}>
-        <meshStandardMaterial 
-          color="#ffffff" 
-          roughness={0.3}
-          metalness={0.1}
-          emissive="#4285F4"
-          emissiveIntensity={0.3}
-        />
-      </mesh>
-    </group>
+    <mesh scale={0.5}> {/* Scale down the 3D model */}
+      <boxGeometry args={[2, 2, 2]} />
+      <meshStandardMaterial color="royalblue" />
+    </mesh>
   );
 }
 
 function Hero() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const carouselRef = useRef();
 
   const carouselSettings = {
     showThumbs: false,
@@ -47,8 +35,7 @@ function Hero() {
     stopOnHover: true,
     swipeable: true,
     emulateTouch: true,
-    className: "premium-carousel",
-    ref: carouselRef
+    className: "premium-carousel"
   };
 
   const slides = [
@@ -80,12 +67,12 @@ function Hero() {
         background: `
           linear-gradient(135deg, 
             ${theme.palette.primary.dark} 0%, 
-            ${theme.palette.secondary.dark} 100%
+            ${theme.palette.secondary.main} 100%
           )
         `,
       }}
     >
-      {/* 3D Document Scene */}
+      {/* 🌀 3D Scene */}
       {!isMobile && (
         <Box sx={{
           position: 'absolute',
@@ -96,18 +83,12 @@ function Hero() {
           zIndex: 0,
           pointerEvents: 'none'
         }}>
-          <Canvas camera={{ position: [0, 0, 8], fov: 50 }}>
+          <Canvas camera={{ position: [0, 0, 15], fov: 50 }}> {/* Adjusted camera position */}
             <ambientLight intensity={0.5} />
             <pointLight position={[10, 10, 10]} intensity={1} />
-            <spotLight
-              position={[0, 10, 0]}
-              angle={0.15}
-              penumbra={1}
-              intensity={1}
-              castShadow
-            />
+            <spotLight position={[0, 10, 0]} angle={0.15} penumbra={1} intensity={1} castShadow />
             <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-              <DocumentModel />
+              <Simple3DBox />
             </Float>
             <OrbitControls 
               enableZoom={false} 
@@ -115,53 +96,51 @@ function Hero() {
               autoRotateSpeed={1.5}
               enablePan={false}
             />
-            <Environment preset="city" />
             <EffectComposer>
               <Bloom 
                 luminanceThreshold={0.5}
                 luminanceSmoothing={0.9}
                 height={300}
-                intensity={1}
+                intensity={1.5} // Slightly increased for a better effect
               />
             </EffectComposer>
           </Canvas>
         </Box>
       )}
 
-      {/* Content Layer */}
+      {/* 📢 Hero Content */}
       <Box sx={{
         position: 'relative',
         zIndex: 2,
-        backdropFilter: 'blur(2px)',
-        backgroundColor: 'rgba(0,0,0,0.3)'
+        backdropFilter: 'blur(4px)', // stronger blur effect
+        backgroundColor: 'rgba(0,0,0,0.4)', // darker overlay for better readability
+        py: 15, // Vertical padding for balance
       }}>
-        {/* Hero Text */}
-        <Box 
-          sx={{
-            textAlign: 'center',
-            px: 2,
-            py: 15,
-            maxWidth: '1200px',
-            mx: 'auto'
-          }}
-        >
+        <Box sx={{
+          textAlign: 'center',
+          px: 2,
+          py: 5,
+          maxWidth: '1200px',
+          mx: 'auto',
+          animation: 'fadeIn 1s ease-in-out',
+        }}>
           <Typography 
             variant="h1"
             component="h1"
             sx={{
-              fontWeight: 900,
+              fontWeight: 800,
               mb: 3,
               background: `linear-gradient(90deg, ${theme.palette.primary.light}, ${theme.palette.secondary.light})`,
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              fontSize: isMobile ? '3rem' : '5rem',
+              fontSize: isMobile ? '3.5rem' : '5rem',
               lineHeight: 1.1,
-              textShadow: '0 2px 10px rgba(0,0,0,0.2)'
+              textShadow: '0 4px 10px rgba(0,0,0,0.2)',
+              letterSpacing: 1.5, // Slightly increased letter spacing for modern feel
             }}
           >
             DocsG Pro
           </Typography>
-          
           <Typography 
             variant="h4"
             component="p"
@@ -171,12 +150,12 @@ function Hero() {
               maxWidth: '800px',
               mx: 'auto',
               fontWeight: 300,
-              fontSize: isMobile ? '1.2rem' : '1.8rem'
+              fontSize: isMobile ? '1.2rem' : '1.8rem',
+              opacity: 0.9, // Slight transparency for modern design
             }}
           >
             The future of <strong>real-time</strong> document collaboration
           </Typography>
-
           <Button 
             component={Link}
             to="/signup"
@@ -194,29 +173,31 @@ function Hero() {
               '&:hover': {
                 transform: 'translateY(-3px)',
                 boxShadow: `0 0 30px ${theme.palette.primary.light}`,
-              }
+              },
+              animation: 'scaleUp 0.5s ease-in-out', // Button hover effect
             }}
           >
             Get Started Free
           </Button>
         </Box>
 
-        {/* Premium Carousel */}
+        {/* 🎞️ Carousel */}
         <Box sx={{ 
-          width: '90%',
+          width: '60%',
           maxWidth: '1600px',
           mx: 'auto',
           pb: 10,
           position: 'relative',
+          height: '80%',
         }}>
           <Carousel {...carouselSettings}>
             {slides.map((slide, index) => (
               <Box 
                 key={index}
                 sx={{
-                  borderRadius: 4,
+                  borderRadius: 8,
                   overflow: 'hidden',
-                  boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.5)`,
+                  boxShadow: `0 25px 50px -12px rgba(0, 0, 0, 0.4)`,
                   transform: 'perspective(1000px)',
                   transition: 'transform 0.5s ease, box-shadow 0.5s ease',
                   '&:hover': {
@@ -233,6 +214,11 @@ function Hero() {
                     width: '100%',
                     height: isMobile ? '400px' : '700px',
                     objectFit: 'cover',
+                    borderRadius: 8,
+                    transition: 'transform 0.4s ease',
+                    '&:hover': {
+                      transform: 'scale(1.1)',
+                    }
                   }}
                 />
                 <Box 
@@ -241,8 +227,8 @@ function Hero() {
                     bottom: 0,
                     left: 0,
                     right: 0,
-                    background: `linear-gradient(to top, ${theme.palette.common.black} 30%, transparent 100%)`,
-                    color: theme.palette.common.white,
+                    background: `linear-gradient(to top, #000 30%, transparent 100%)`,
+                    color: '#fff',
                     p: 4,
                     textAlign: 'center',
                     fontSize: isMobile ? '1.3rem' : '1.6rem',

@@ -29,9 +29,17 @@ function Header({ isDarkMode, toggleDarkMode, isLoggedIn = false }) {
           </ListItem>
         </>
       ) : (
-        <ListItem button onClick={() => alert('Profile clicked')}>
-          <ListItemText primary="My Profile" />
-        </ListItem>
+        <>
+          <ListItem button onClick={() => { navigate('/profile'); setDrawerOpen(false); }}>
+            <ListItemText primary="My Profile" />
+          </ListItem>
+          <ListItem button onClick={() => { navigate('/settings'); setDrawerOpen(false); }}>
+            <ListItemText primary="Settings" />
+          </ListItem>
+          <ListItem button onClick={() => { alert('Logging out...'); setDrawerOpen(false); }}>
+            <ListItemText primary="Logout" />
+          </ListItem>
+        </>
       )}
     </List>
   );
@@ -40,7 +48,11 @@ function Header({ isDarkMode, toggleDarkMode, isLoggedIn = false }) {
     <>
       <AppBar position="static" color="primary" sx={{ boxShadow: 3 }}>
         <Toolbar sx={{ justifyContent: 'space-between' }}>
-          <Typography variant="h6" sx={{ fontWeight: 'bold', fontSize: '1.5rem', cursor: 'pointer' }} onClick={() => navigate('/')}>
+          <Typography
+            variant="h6"
+            sx={{ fontWeight: 'bold', fontSize: '1.5rem', cursor: 'pointer' }}
+            onClick={() => navigate('/')}
+          >
             Google Docs Clone
           </Typography>
 
@@ -82,9 +94,7 @@ function Header({ isDarkMode, toggleDarkMode, isLoggedIn = false }) {
                     variant="contained"
                     color="secondary"
                     onClick={() => navigate('/signup')}
-                    sx={{
-                      fontWeight: 600
-                    }}
+                    sx={{ fontWeight: 600 }}
                   >
                     Signup
                   </Button>

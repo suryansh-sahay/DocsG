@@ -5,34 +5,20 @@ import "./logister.css";
 
 function Signup() {
   const navigate = useNavigate();
-  
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-    email: "",
-  });
-
-  const [errors, setErrors] = useState({
-    username: "",
-    password: "",
-    email: "",
-  });
-
+  const [formData, setFormData] = useState({ username: "", password: "", email: "" });
+  const [errors, setErrors] = useState({ username: "", password: "", email: "", server: "" });
   const [verificationSent, setVerificationSent] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
-
-    // Clear error when user types
     if (value.trim()) setErrors({ ...errors, [name]: "" });
   };
 
   const validateForm = () => {
     let valid = true;
     const newErrors = { ...errors };
-
     if (!formData.username.trim()) {
       newErrors.username = "Username cannot be empty";
       valid = false;
@@ -48,7 +34,6 @@ function Signup() {
       newErrors.email = "Invalid email format";
       valid = false;
     }
-
     setErrors(newErrors);
     return valid;
   };
@@ -61,20 +46,22 @@ function Signup() {
 
     try {
       await axios.post("http://localhost:3002/signup", formData);
-      setFormData({ username: "", password: "", email: "" });
+      setFormData({ username: "", password: "", email: "" }); // Clear form
       setVerificationSent(true);
 
-      // After showing verification message for 2s, navigate to login page
       setTimeout(() => {
         setVerificationSent(false);
         navigate("/login");
       }, 2000);
-
     } catch (err) {
       setErrors({
         ...errors,
-        server: err.response?.data?.message || "Signup failed. Try again.",
+        server: err.response?.data?.error || "Signup failed. Try again.",
       });
+      setTimeout(() => {
+        setErrors({ username: '', password: '', email: '', server: '' });
+        setFormData({ username: "", password: "", email: "" }); // Clear form after 2s
+      }, 2000);
     } finally {
       setLoading(false);
     }
@@ -97,9 +84,7 @@ function Signup() {
               onChange={handleChange}
               className={errors.username ? "input-error" : ""}
             />
-            {errors.username && (
-              <span className="error-text">{errors.username}</span>
-            )}
+            {errors.username && <span className="error-text">{errors.username}</span>}
           </div>
 
           <div className="form-group">
@@ -112,9 +97,7 @@ function Signup() {
               onChange={handleChange}
               className={errors.password ? "input-error" : ""}
             />
-            {errors.password && (
-              <span className="error-text">{errors.password}</span>
-            )}
+            {errors.password && <span className="error-text">{errors.password}</span>}
           </div>
 
           <div className="form-group">

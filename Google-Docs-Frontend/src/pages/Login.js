@@ -5,14 +5,8 @@ import './logister.css';
 
 function Login() {
   const navigate = useNavigate();
-  const [formData, setFormData] = useState({
-    username: '',
-    password: ''
-  });
-  const [errors, setErrors] = useState({
-    username: '',
-    password: ''
-  });
+  const [formData, setFormData] = useState({ username: '', password: '' });
+  const [errors, setErrors] = useState({ username: '', password: '' });
   const [loginSuccess, setLoginSuccess] = useState(false);
   const [loginError, setLoginError] = useState('');
 
@@ -25,7 +19,6 @@ function Login() {
   const validateForm = () => {
     let valid = true;
     const newErrors = { ...errors };
-
     if (!formData.username.trim()) {
       newErrors.username = 'Username cannot be empty';
       valid = false;
@@ -34,7 +27,6 @@ function Login() {
       newErrors.password = 'Password cannot be empty';
       valid = false;
     }
-
     setErrors(newErrors);
     return valid;
   };
@@ -42,18 +34,22 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     setLoginError('');
-    
     if (!validateForm()) return;
 
     axios.post('http://localhost:3002/login', formData, { withCredentials: true })
       .then((response) => {
         setLoginSuccess(true);
+        setFormData({ username: '', password: '' }); // Reset input fields
         setTimeout(() => {
           navigate("/user");
-        }, 1500); // Short delay before navigation
+        }, 1500); // short delay before navigating
       })
       .catch((err) => {
-        setLoginError(err.response?.data?.message || 'Invalid username or password');
+        setLoginError(err.response?.data?.error || 'Invalid username or password');
+        setTimeout(() => {
+          setLoginError('');
+          setFormData({ username: '', password: '' }); // Clear form after 2 sec
+        }, 2000);
       });
   };
 
@@ -62,7 +58,7 @@ function Login() {
       <div className="login-container">
         <h2>Welcome Back 👋</h2>
         <p className="subtitle">Please enter your login details below.</p>
-        
+
         <form onSubmit={handleLogin}>
           <div className="form-group">
             <label>Username</label>
@@ -76,7 +72,7 @@ function Login() {
             />
             {errors.username && <span className="error-text">{errors.username}</span>}
           </div>
-          
+
           <div className="form-group">
             <label>Password</label>
             <input
@@ -89,17 +85,13 @@ function Login() {
             />
             {errors.password && <span className="error-text">{errors.password}</span>}
           </div>
-          
+
           <button type="submit" className='btn'>Login</button>
-          
+
           {loginError && <p className="error-message">{loginError}</p>}
-          {loginSuccess && (
-            <div className="success-message">
-              Login successful! Redirecting...
-            </div>
-          )}
+          {loginSuccess && <div className="success-message">Login successful! Redirecting...</div>}
         </form>
-        
+
         <p className="switch-link">
           Don't have an account? <span onClick={() => navigate('/signup')}>Sign up</span>
         </p>
